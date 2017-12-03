@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/edit_contact_activity_header"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/colorBlueGray">
+
+        <ImageView
+            android:id="@+id/edit_contact_activity_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/ic_person_add_white_24dp" />
+
+        <TextView
+            android:id="@+id/edit_contact_activity_header_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/edit_contact_activity_image"
+            android:text="ADD NEW CONTACT"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/edit_contact_activity_header">
+        <EditText
+            android:id="@+id/edit_contact_activity_et_firstname"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter firstname"
+            android:drawableRight="@drawable/ic_account_gray_black_24dp"
+
+            />
+        <EditText
+            android:id="@+id/edit_contact_activity_et_secondname"
+            android:layout_below="@id/edit_contact_activity_et_firstname"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter secondname"
+            android:drawableRight="@drawable/ic_account_gray_black_24dp"
+            />
+        <EditText
+            android:id="@+id/edit_contact_activity_et_firstphone"
+            android:layout_below="@id/edit_contact_activity_et_secondname"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter phone number"
+            android:drawableRight="@drawable/ic_local_phone_gray_24dp"
+            />
+        <EditText
+            android:id="@+id/edit_contact_activity_et_email"
+            android:layout_below="@id/edit_contact_activity_et_firstphone"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter email"
+            android:drawableRight="@drawable/ic_mail_outline_gray_24dp"
+            />
+        <EditText
+            android:id="@+id/edit_contact_activity_et_secondphone"
+            android:layout_below="@id/edit_contact_activity_et_email"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter second number"
+
+            />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

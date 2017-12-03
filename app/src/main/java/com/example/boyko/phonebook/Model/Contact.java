@@ -1,15 +1,18 @@
-package com.example.boyko.phonebook;
+package com.example.boyko.phonebook.Model;
 
-/**
- * Created by boyko on 02.12.2017.
- */
+import java.io.Serializable;
 
-public class Contact {
+
+public class Contact implements Serializable {
     private String phoneNumber;
     private String firstName;
     private String secondName;
     private String email;
     private String secondPhone;
+
+    public Contact(){
+
+    }
 
     public Contact(String phoneNumber, String firstName, String secondName, String email, String secondPhone) {
         this.phoneNumber = phoneNumber;

@@ -8,11 +8,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.boyko.phonebook.Model.Contact;
+
 import java.util.ArrayList;
 
-/**
- * Created by boyko on 02.12.2017.
- */
 
 public class ContactAdapter extends BaseAdapter {
 
@@ -61,12 +60,4 @@ public class ContactAdapter extends BaseAdapter {
         return ((Contact)getItem(position));
     }
 
-
-
-
-    @Nullable
-    @Override
-    public CharSequence[] getAutofillOptions() {
-        return new CharSequence[0];
-    }
 }
