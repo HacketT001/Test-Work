@@ -4,27 +4,25 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab;
     private ListView contactListView;
-    private Contact[] myContacts;
+    private ArrayList<Contact> contacts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.list_activity);
 
 
         contactListView = (ListView)findViewById(R.id.contactList);
         fab = (FloatingActionButton) findViewById(R.id.fab);
-
+        contacts = initContactList();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,8 +31,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ArrayAdapter<Contact> contactArrayAdapter = new ArrayAdapter<Contact>(this,R.layout.list_layout, myContacts);
+       ContactAdapter contactAdapter = new ContactAdapter(this, contacts);
+       contactListView.setAdapter(contactAdapter);
 
     }
-
+    public ArrayList<Contact> initContactList(){
+       ArrayList<Contact> contacts1 = new ArrayList<Contact>();
+        for(int i = 0; i< 5; i++) {
+            Contact contact = new Contact(Integer.toString(i), Integer.toString(i), Integer.toString(i), Integer.toString(i), Integer.toString(i));
+            contacts1.add(contact);
+        }
+        return contacts1;
+    }
 }
