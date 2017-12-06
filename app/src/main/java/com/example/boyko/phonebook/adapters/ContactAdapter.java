@@ -1,25 +1,28 @@
-package com.example.boyko.phonebook;
+package com.example.boyko.phonebook.adapters;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.boyko.phonebook.Model.Contact;
+import com.example.boyko.phonebook.R;
+import com.example.boyko.phonebook.models.Contact;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
+
+import io.realm.Realm;
 
 
 public class ContactAdapter extends BaseAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
-    private ArrayList<Contact> contacts;
+    private LinkedList<Contact> contacts;
 
-    public ContactAdapter(Context context, ArrayList<Contact> contacts) {
+
+    public ContactAdapter(Context context, LinkedList<Contact> linkedList) {
 
         this.context = context;
         this.contacts = contacts;
@@ -59,5 +62,7 @@ public class ContactAdapter extends BaseAdapter {
     public Contact getContact(int position){
         return ((Contact)getItem(position));
     }
+
+
 
 }

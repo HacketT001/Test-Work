@@ -1,22 +1,16 @@
-package com.example.boyko.phonebook.Activity;
+package com.example.boyko.phonebook.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.boyko.phonebook.IntentContainer;
-import com.example.boyko.phonebook.Model.Contact;
+import com.example.boyko.phonebook.models.Contact;
 import com.example.boyko.phonebook.R;
 
 public class ContactActivity extends AppCompatActivity {
@@ -58,7 +52,8 @@ public class ContactActivity extends AppCompatActivity {
                         .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
+                                setResult(RESULT_CANCELED);
+                                finish();
                             }
                         })
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -78,7 +73,8 @@ public class ContactActivity extends AppCompatActivity {
                 Intent toContactActivityIntent = new Intent(ContactActivity.this, EditContact.class);
                 toContactActivityIntent.putExtra(IntentContainer.CONTACT, thisContact);
                 toContactActivityIntent.putExtra(IntentContainer.RULE, IntentContainer.RULE_CHANGE);
-                startActivity(toContactActivityIntent);
+                startActivityForResult(toContactActivityIntent, IntentContainer.RULE_CHANGE);
+
             }
         });
         updateContact();
@@ -87,21 +83,25 @@ public class ContactActivity extends AppCompatActivity {
     private void updateContact() {
         textViewName.setText(thisContact.getFirstName());
         textViewFirstPhone.setText(thisContact.getPhoneNumber());
+        textViewName.append(" " + thisContact.getSecondName());
+        textViewSecondPhone.setText(thisContact.getSecondPhone());
+        textViewEmail.setText(thisContact.getEmail());
+    }
 
-        if (thisContact.getSecondName() != null)
-            textViewName.append(" " + thisContact.getSecondName());
+    @Override
+    public void onBackPressed() {
+        // super.onBackPressed();
+        Intent finishIntent = new Intent();
+        finishIntent.putExtra(IntentContainer.CONTACT, thisContact);
+        setResult(RESULT_OK, finishIntent);
 
-        if (thisContact.getSecondPhone() != null)
-            textViewSecondPhone.setText(thisContact.getSecondPhone());
-
-        if (thisContact.getEmail() != null)
-            textViewEmail.setText(thisContact.getEmail());
+        finish();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
-            thisContact = (Contact) data.getSerializableExtra("Contact");
+            thisContact = (Contact) data.getSerializableExtra(IntentContainer.CONTACT);
             updateContact();
         }
     }

@@ -12,4 +12,5 @@ public interface IntentContainer {
     int RULE_CHANGE = 0;
 
     int REQUESTCODE_NEW_CONTACT = 1;
+    int REQUESTCODE_EDIT_CONTACT = 0;
 }
